@@ -57,4 +57,26 @@ class Graph(Scene):
         self.wait(2)
 
         complex_number = 1 + 1j  # Change this to your desired point
-        point_label = "z = 1 + i"  # Label for the point
+        point_location = complex_plane.n2p(complex_number)
+        point_label = "1 + i"  # Label for the point
+
+        dot = Dot(point_location, color=YELLOW)
+        label = MathTex(point_label, font_size=40, color=YELLOW).next_to(dot, RIGHT)
+
+        # Step 6: Display the Point and Label
+        self.play(FadeIn(dot), FadeIn(label))
+        self.wait(2)
+
+        dot_1_1 = 0+0j
+        dot_2_1 = 1+0j
+
+        # Create a line between these two points using the complex plane
+        line_1 = Line(
+            start=complex_plane.n2p(dot_1_1),  # convert complex number to point
+            end=complex_plane.n2p(dot_2_1),    # convert complex number to point
+            color=BLUE
+        )
+        
+        # Add the line to the scene
+        self.play(Create(line_1))
+        self.wait(2)
