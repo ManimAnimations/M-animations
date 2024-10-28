@@ -10,8 +10,8 @@ class Graph(Scene):
     def construct(self):
         # Step 1: Set up the Complex Plane with specific tick labels
         complex_plane = ComplexPlane(
-            x_range=[-2, 2, 1],        # Real axis range with ticks every 1 unit
-            y_range=[-2, 2, 1],        # Imaginary axis range with ticks every 1 unit
+            x_range=[-7, 7, 1],        # Real axis range with ticks every 1 unit
+            y_range=[-5, 5, 1],        # Imaginary axis range with ticks every 1 unit
             background_line_style={
                 "stroke_color": GREY,
                 "stroke_width": 1,
@@ -26,22 +26,35 @@ class Graph(Scene):
         # Step 2: Add custom labels similar to a calculator display
         # Real axis labels
         real_labels = VGroup(
+            MathTex("-6", font_size=40).next_to(complex_plane.c2p(-6, 0), DOWN),
+            MathTex("-5", font_size=40).next_to(complex_plane.c2p(-5, 0), DOWN),
+            MathTex("-4", font_size=40).next_to(complex_plane.c2p(-4, 0), DOWN),
+            MathTex("-3", font_size=40).next_to(complex_plane.c2p(-3, 0), DOWN),
             MathTex("-2", font_size=40).next_to(complex_plane.c2p(-2, 0), DOWN),
             MathTex("-1", font_size=40).next_to(complex_plane.c2p(-1, 0), DOWN),
             MathTex("0", font_size=40).next_to(complex_plane.c2p(0, 0), DOWN),
             MathTex("1", font_size=40).next_to(complex_plane.c2p(1, 0), DOWN),
             MathTex("2", font_size=40).next_to(complex_plane.c2p(2, 0), DOWN),
+            MathTex("3", font_size=40).next_to(complex_plane.c2p(3, 0), DOWN),
+            MathTex("4", font_size=40).next_to(complex_plane.c2p(4, 0), DOWN),
+            MathTex("5", font_size=40).next_to(complex_plane.c2p(5, 0), DOWN),
+            MathTex("6", font_size=40).next_to(complex_plane.c2p(6, 0), DOWN),
         )
 
         # Imaginary axis labels
         imaginary_labels = VGroup(
+            MathTex("3i", font_size=40).next_to(complex_plane.c2p(0, 3), LEFT),
             MathTex("2i", font_size=40).next_to(complex_plane.c2p(0, 2), LEFT),
             MathTex("i", font_size=40).next_to(complex_plane.c2p(0, 1), LEFT),
             MathTex("-i", font_size=40).next_to(complex_plane.c2p(0, -1), LEFT),
             MathTex("-2i", font_size=40).next_to(complex_plane.c2p(0, -2), LEFT),
+            MathTex("-3i", font_size=40).next_to(complex_plane.c2p(0, -3), LEFT)
         )
 
         # Step 3: Display the Complex Plane and Custom Labels
         self.play(Create(complex_plane))
         self.play(FadeIn(real_labels), FadeIn(imaginary_labels))
         self.wait(2)
+
+        complex_number = 1 + 1j  # Change this to your desired point
+        point_label = "z = 1 + i"  # Label for the point
