@@ -1,0 +1,4 @@
+# This file is used internally by FFMPEG.
+file 'file:C:/Users/Belle Abelador/Desktop/More Code!/Manim/YT/ln(-1)/media/videos/ln(-1)/1080p60/partial_movie_files/TFW/3977891868_2138481890_223132457.mp4'
+file 'file:C:/Users/Belle Abelador/Desktop/More Code!/Manim/YT/ln(-1)/media/videos/ln(-1)/1080p60/partial_movie_files/TFW/2852726489_1141282389_3912321155.mp4'
+file 'file:C:/Users/Belle Abelador/Desktop/More Code!/Manim/YT/ln(-1)/media/videos/ln(-1)/1080p60/partial_movie_files/TFW/2852726489_1379842750_314153141.mp4'
