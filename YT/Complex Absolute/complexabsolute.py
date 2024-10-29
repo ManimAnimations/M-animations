@@ -134,5 +134,16 @@ class Graph(Scene):
         equationc = MathTex("1^2+1^2=c^2").next_to(line_1,DOWN*5)
         self.play(AddTextLetterByLetter(equationc)) 
         self.wait(2)
-        self.play(FadeOut(side_a,side_b,line_1,line_2,line_3,equationp))
+        self.play(FadeOut(side_a,side_b,line_1,line_2,line_3,equationp,equationc,dot,label))
+        self.wait(2)
+
+        equations = MathTex("c^2=2",font_size=200)
+        self.play(Write(equations))
+        self.wait(2)
+
+        equations1 = MathTex("c = \sqrt{2}",font_size=200)
+        self.play(Transform(equations,equations1))
+        self.play(2)
+
+        
 
