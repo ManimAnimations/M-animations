@@ -107,6 +107,10 @@ class Graph(Scene):
         self.play(Create(line_3))
         self.wait(2)
 
+
+        self.play(FadeOut(complex_plane,real_labels,imaginary_labels))
+        self.wait(2)
+
         Pyth = Text("Let's use the pythagorean theorem",font_size = 50).next_to(line_1,DOWN)
 
         self.play(FadeIn(Pyth))
@@ -121,3 +125,14 @@ class Graph(Scene):
         side_b = MathTex("1",color = BLUE).next_to(line_2,RIGHT)
         self.play(FadeIn(side_b))
         self.wait(2)
+
+        equationp = MathTex("a^2+b^2=c^2").next_to(line_1,DOWN*3)
+        self.play(Write(equationp))
+        self.wait(2)
+
+
+        equationc = MathTex("1^2+1^2=c^2").next_to(line_1,DOWN*5)
+        self.play(AddTextLetterByLetter(equationc)) 
+        self.wait(2)
+        self.play(FadeOut(side_a,side_b,line_1,line_2,line_3,equationp))
+
