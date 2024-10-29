@@ -61,7 +61,7 @@ class Graph(Scene):
         point_label = "1 + i"  # Label for the point
 
         dot = Dot(point_location, color=YELLOW)
-        label = MathTex(point_label, font_size=40, color=YELLOW).next_to(dot, RIGHT)
+        label = MathTex(point_label, font_size=50, color=YELLOW).next_to(dot, RIGHT)
 
         # Step 6: Display the Point and Label
         self.play(FadeIn(dot), FadeIn(label))
@@ -79,4 +79,45 @@ class Graph(Scene):
         
         # Add the line to the scene
         self.play(Create(line_1))
+        self.wait(2)
+
+        dot_1_2 = 1+0j
+        dot_2_2 = 1+1j
+
+        # Create a line between these two points using the complex plane
+        line_2 = Line(
+            start=complex_plane.n2p(dot_1_2),  # convert complex number to point
+            end=complex_plane.n2p(dot_2_2),    # convert complex number to point
+            color=BLUE
+        )       
+
+        self.play(Create(line_2))
+        self.wait(2)
+
+        dot_1_3 = 0+0j
+        dot_2_3 = 1+1j
+
+        # Create a line between these two points using the complex plane
+        line_3 = Line(
+            start=complex_plane.n2p(dot_1_3),  # convert complex number to point
+            end=complex_plane.n2p(dot_2_3),    # convert complex number to point
+            color=BLUE
+        )       
+
+        self.play(Create(line_3))
+        self.wait(2)
+
+        Pyth = Text("Let's use the pythagorean theorem",font_size = 50).next_to(line_1,DOWN)
+
+        self.play(FadeIn(Pyth))
+        self.wait(2)
+        self.play(FadeOut(Pyth))
+        self.wait(2)
+
+        side_a = MathTex("1",color = BLUE).next_to(line_1,DOWN)
+        self.play(FadeIn(side_a))
+        self.wait(2)
+
+        side_b = MathTex("1",color = BLUE).next_to(line_2,RIGHT)
+        self.play(FadeIn(side_b))
         self.wait(2)
