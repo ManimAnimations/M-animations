@@ -143,7 +143,19 @@ class Graph(Scene):
 
         equations1 = MathTex("c = \sqrt{2}",font_size=200)
         self.play(Transform(equations,equations1))
-        self.play(2)
+        self.wait(2)
 
-        
+        self.play(FadeToColor(equations1,BLACK))
+        self.wait(2)
+
+        equationf = MathTex(r"\left| 1+i \right| = \sqrt{2}",font_size = 150)
+        self.play(Write(equationf))
+        self.wait(2)
+
+
+class TFW(Scene):
+    def construct(self):
+        tfw = Text("Thank you for watching!",color=BLUE)
+        self.play(Write(tfw))
+        self.wait(2)
 
