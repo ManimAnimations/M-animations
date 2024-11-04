@@ -58,39 +58,43 @@ class Solution(Scene):
         ).arrange(DOWN, buff=0.1)
 
         # Create a bounding rectangle around the equations
-        rectanglesef0 = SurroundingRectangle(starting_equation_full0, color = WHITE, buff=0)
+        rectanglesef0 = RoundedRectangle(corner_radius=0.5, color= WHITE) 
         rectanglesef0.width = config.frame_width
+        rectanglesef0.move_to(starting_equation_full0)
 
 
         # Create "Procedure" and "Number" texts
         procedure0 = Text("Procedure", font_size=30,color=BLUE)
         counter0 = Text("Number", font_size=30,color=RED)
 
-        rectanglepro0 = SurroundingRectangle(procedure0, color = BLUE, buff=0)
-        rectanglecou0 = SurroundingRectangle(counter0, color = RED, buff=0)
+        procedure_box0 = RoundedRectangle(corner_radius=0.15, color=BLUE, fill_opacity=0.1, 
+                                         width=procedure0.width + 0.3, 
+                                         height=procedure0.height + 0.3)
+        counter_box0 = RoundedRectangle(corner_radius=0.15, color=RED, fill_opacity=0.1, 
+                                      width=counter0.width + 0.3, 
+                                      height=counter0.height + 0.3)
 
-        # Position "Procedure" and "Number" texts below the bounding rectangle
-        procedure0.next_to(rectanglesef0, DOWN, buff=0.5)
-        counter0.next_to(procedure0, RIGHT, buff=1)
+        procedure0.move_to(DL)
+        counter0.move_to(DR)
 
+        procedure_box0.move_to(DL)
+        counter_box0.move_to(DR)
 
 
         # Group everything together
-        full_layout = VGroup(rectanglesef0, starting_equation_full0, procedure0, counter0,rectanglepro0,rectanglecou0)
+        full_layout = VGroup(rectanglesef0, starting_equation_full0, procedure0, counter0,procedure_box0,counter_box0)
 
         # Move everything to the left edge
         full_layout.move_to(UL*0.5)
 
         # Add animations
         # Add everything to the scene individually to prevent tracking
-        self.add(rectanglesef0, starting_equation_full0)
-        self.add(procedure0, rectanglepro0)
-        self.add(counter0, rectanglecou0)
+        
         
         # Add animations for clarity
         self.play(Create(rectanglesef0))
         self.play(Write(starting_equation_full0))
-        self.play(Write(procedure0), Create(rectanglepro0))
-        self.play(Write(counter0), Create(rectanglecou0))
+        self.play(Write(procedure0), Create(counter_box0))
+        self.play(Write(counter0), Create(counter_box0))
         self.wait(2)
         
