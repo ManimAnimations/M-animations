@@ -56,14 +56,19 @@ class Solution(Scene):
             starting_equation4_0, starting_equation5_0, starting_equation6_0,
             starting_equation7_0, starting_equation8_0, starting_equation9_0,
             starting_equation10_0, starting_equation11_0
-        ).arrange(DOWN, buff=0.2)
+        ).arrange(DOWN, buff=0.15)
 
-        starting_equation_full0.move_to(RIGHT*20)
+
+        starting_equation_full0.move_to(RIGHT*20+DOWN*0.125)
 
         # Create a bounding rectangle around the equations
 
-        rectangleeq0 = RoundedRectangle(corner_radius=0.5, color= WHITE) 
-        rectangleeq0.scale_to_fit(starting_equation_full0)
+        rectangleeq0 = RoundedRectangle(corner_radius=0.5, 
+
+                                        width=starting_equation_full0.width+0.3,
+                                        height=starting_equation_full0.height +3,   
+
+                                        color= WHITE) 
         rectangleeq0.surround(starting_equation_full0)
 
 
@@ -83,11 +88,11 @@ class Solution(Scene):
         #|                               |                                      |
         #|                               |     Procedure                        |
         #|                               |                                      |
-        #|          equation              --------------------------------------|
+        #|          equation             |--------------------------------------|
         #|                               |                                      |
         #|                               |                                      |
-        #|------------------------------ |        Count                         |
-        #|  Minor Equation               |                                      |
+        #|                               |        Count                         |
+        #|                               |                                      |
         #|----------------------------------------------------------------------|
 
 
@@ -119,7 +124,6 @@ class Solution(Scene):
         # Add animations for clarity
 
         self.play(Create(rectangleeq0))
-
         self.play(Write(starting_equation_full0))
         self.play(FadeIn(procedure_box0), FadeIn(procedure0))
         self.play(FadeIn(counter_box0), FadeIn(counter0))
