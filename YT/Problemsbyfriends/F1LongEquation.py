@@ -24,6 +24,8 @@ class Legend(Scene):
         self.wait(1)
         self.play(FadeOut(WhiteText,BlueText,RedText))
 
+from manim import *
+
 class Solution(Scene):
     def construct(self):
         #Developer's notes: This is going to be long... and good luck to you, manim and Andrei
@@ -48,19 +50,21 @@ class Solution(Scene):
 
 
 
-
         # Stack the lines of the equation vertically with space between each line
         starting_equation_full0 = VGroup(
             starting_equation1_0, starting_equation2_0, starting_equation3_0,
             starting_equation4_0, starting_equation5_0, starting_equation6_0,
             starting_equation7_0, starting_equation8_0, starting_equation9_0,
             starting_equation10_0, starting_equation11_0
-        ).arrange(DOWN, buff=0.1)
+        ).arrange(DOWN, buff=0.2)
+
+        starting_equation_full0.move_to(RIGHT*20)
 
         # Create a bounding rectangle around the equations
-        rectanglesef0 = RoundedRectangle(corner_radius=0.5, color= WHITE) 
-        rectanglesef0.width = config.frame_width
-        rectanglesef0.move_to(starting_equation_full0)
+
+        rectangleeq0 = RoundedRectangle(corner_radius=0.5, color= WHITE) 
+        rectangleeq0.scale_to_fit(starting_equation_full0)
+        rectangleeq0.surround(starting_equation_full0)
 
 
         # Create "Procedure" and "Number" texts
@@ -74,27 +78,50 @@ class Solution(Scene):
                                       width=counter0.width + 0.3, 
                                       height=counter0.height + 0.3)
 
-        procedure0.move_to(DL)
-        counter0.move_to(DR)
+        #|----------------------------------------------------------------------|
+        #|                               |                                      |
+        #|                               |                                      |
+        #|                               |     Procedure                        |
+        #|                               |                                      |
+        #|          equation              --------------------------------------|
+        #|                               |                                      |
+        #|                               |                                      |
+        #|------------------------------ |        Count                         |
+        #|  Minor Equation               |                                      |
+        #|----------------------------------------------------------------------|
 
-        procedure_box0.move_to(DL)
-        counter_box0.move_to(DR)
 
+
+        # Define BL and BR correctly
+        TR = UP * config.frame_height / 2 + RIGHT * config.frame_width / 2
+        BR = DOWN * config.frame_height / 2 + RIGHT * config.frame_width / 2
+
+        # Position text at corners
+        procedure0.move_to(TR+RIGHT*7)  # Bottom-left corner
+        counter0.move_to(BR+RIGHT*7)  # Bottom-right corner
+
+        # Align boxes to corners
+        procedure_box0.move_to(procedure0)  # Bottom-left corner
+        counter_box0.move_to(counter0)  # Bottom-right corner
 
         # Group everything together
-        full_layout = VGroup(rectanglesef0, starting_equation_full0, procedure0, counter0,procedure_box0,counter_box0)
+        full_layout = VGroup(rectangleeq0, starting_equation_full0, procedure0, counter0,procedure_box0,counter_box0)
 
         # Move everything to the left edge
-        full_layout.move_to(UL*0.5)
+        full_layout.align_to(LEFT)
+        # Move the entire group to the left edge, the boxes should be positioned correctly now
+        full_layout.move_to(LEFT*3)
 
         # Add animations
         # Add everything to the scene individually to prevent tracking
         
         
         # Add animations for clarity
-        self.play(Create(rectanglesef0))
+
+        self.play(Create(rectangleeq0))
+
         self.play(Write(starting_equation_full0))
-        self.play(Write(procedure0), Create(counter_box0))
-        self.play(Write(counter0), Create(counter_box0))
+        self.play(FadeIn(procedure_box0), FadeIn(procedure0))
+        self.play(FadeIn(counter_box0), FadeIn(counter0))
+
         self.wait(2)
-        
