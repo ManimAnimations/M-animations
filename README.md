@@ -18,5 +18,3 @@ These files run on manim, so be warned if you are new to python and manim!
 5. Enjoy!!
 
 See https://youtu.be/8-Ocd9IlVKI?si=qitYW44C8LwZTxGv for more information
-
-
