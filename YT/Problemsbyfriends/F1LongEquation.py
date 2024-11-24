@@ -56,33 +56,38 @@ class Solution(Scene):
         rectangleeq0 = RoundedRectangle(
             corner_radius=0.5,
             width=starting_equation_full0.width + 0.5,
-            height=starting_equation_full0.height + 0.5,
+            height=starting_equation_full0.height + 3,
             color=WHITE
         )
         rectangleeq0.surround(starting_equation_full0)
 
         # Create "Procedure" and "Number" texts
-        procedure_text = Text("Look for initial cancellations", font_size=30, color=BLUE)
-        counter_text = MathTex("0", font_size=30, color=RED)
+        procedure_text0 = Text("Look for initial \n cancellations", font_size=30, color=BLUE)
+        counter_text0 = MathTex("0", font_size=30, color=RED)
 
         # Create procedure and counter boxes
-        procedure_box0 = RoundedRectangle(
+        procedure_box = RoundedRectangle(
             corner_radius=0.15,
             color=BLUE,
             fill_opacity=0.1,
-            height=config.frame_height / 2
+            width =config.frame_width / 4.8,
+            height=config.frame_height / 2.3
         ).to_edge(UP)
 
-        counter_box0 = RoundedRectangle(
+        counter_box = RoundedRectangle(
             corner_radius=0.15,
             color=RED,
             fill_opacity=0.1,
-            height=config.frame_height / 2
+            width =config.frame_width / 4.8,
+            height=config.frame_height / 2.3
         ).to_edge(DOWN)
 
         # Align the text inside their respective boxes
-        procedure_text.move_to(procedure_box0.get_center())
-        counter_text.move_to(counter_box0.get_center())
+        procedure_text0.move_to(procedure_box.get_center()+RIGHT*5.5+UP*0.5)
+        counter_text0.move_to(counter_box.get_center()+RIGHT*5.5+DOWN*0.5)
+
+        procedure_box.move_to(procedure_text0)
+        counter_box.move_to(counter_text0)
 
         # |----------------------------------------------------------------------|
         # |                               |                                      |
@@ -99,6 +104,6 @@ class Solution(Scene):
         # Animations
         self.play(Create(rectangleeq0))  # Rectangle around the equations
         self.play(Write(starting_equation_full0))  # Equation animation
-        self.play(FadeIn(procedure_box0), Write(procedure_text))  # Procedure box and text
-        self.play(FadeIn(counter_box0), Write(counter_text))  # Counter box and text
+        self.play(FadeIn(procedure_box), Write(procedure_text0))  # Procedure box and text
+        self.play(FadeIn(counter_box), Write(counter_text0))  # Counter box and text
         self.wait(2)
