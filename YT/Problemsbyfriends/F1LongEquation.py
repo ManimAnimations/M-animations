@@ -49,8 +49,10 @@ class Solution(Scene):
             starting_equation10_0, starting_equation11_0 
         ).arrange(DOWN, buff=0.15)
 
+        sef_pos = LEFT*2 +DOWN*0.125
+
         # Move the equations slightly to the left for layout balance
-        starting_equation_full0.move_to(LEFT * 2 + DOWN * 0.125)
+        starting_equation_full0.move_to(sef_pos)
 
         # Create a bounding rectangle around the equations
         rectangleeq0 = RoundedRectangle(
@@ -63,7 +65,7 @@ class Solution(Scene):
 
         # Create "Procedure" and "Number" texts
         procedure_text0 = Text("Look for initial \n cancellations", font_size=30, color=BLUE)
-        counter_text0 = MathTex("0", font_size=30, color=RED)
+        counter_text0 = MathTex("0", font_size=100, color=RED)
 
         # Create procedure and counter boxes
         procedure_box = RoundedRectangle(
@@ -107,3 +109,22 @@ class Solution(Scene):
         self.play(FadeIn(procedure_box), Write(procedure_text0))  # Procedure box and text
         self.play(FadeIn(counter_box), Write(counter_text0))  # Counter box and text
         self.wait(2)
+
+        starting_equation10_1 = MathTex(" - 80 + 10 - 108  - 8 + 9 - 10 ").scale(0.65) 
+        counter_text1 = MathTex("1", font_size=100, color=RED)
+
+        starting_equation_full1 = VGroup(
+            starting_equation1_0, starting_equation2_0, starting_equation3_0,
+            starting_equation4_0, starting_equation5_0,starting_equation6_0,
+            starting_equation7_0, starting_equation8_0, starting_equation9_0,
+            starting_equation10_1, starting_equation11_0 
+        ).arrange(DOWN, buff=0.15)
+
+        starting_equation_full1.move_to(sef_pos)
+
+        counter_text1.move_to(counter_box.get_center()+RIGHT*5.5+DOWN*0.5)
+
+        starting_equation_full0.move_to(LEFT * 2 + DOWN * 0.125)
+
+        self.play(Transform(starting_equation10_0,starting_equation10_1),Transform(counter_text0,counter_text1))
+        self.wait(5)
