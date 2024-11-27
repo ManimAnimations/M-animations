@@ -30,7 +30,7 @@ class Solution(Scene):
 
         # Define the main starting equation
         starting_equation1_0 = MathTex("109 \\cdot (10 + 90 + 10) \\cdot 900 \\div 80 + 190 - 30 \\cdot (20 + 5 -(80 + 40)  ").scale(0.65)
-        starting_equation2_0 = MathTex("+ 10 + 90 - 10  ) + 10 + 90 - 10) \\div 2 \\cdot (109 \\cdot (30 \\cdot 2 \\div 8) + 90)").scale(0.65)
+        starting_equation2_0 = MathTex("+ 10 + 90 - 10  )  \\div 2 \\cdot (109 \\cdot (30 \\cdot 2 \\div 8) + 90)").scale(0.65)
         starting_equation3_0 = MathTex(" \\cdot 300 \\cdot 4 \\cdot 5 \\div 826 \\cdot (100 \\cdot (8 \\cdot 9000 ) \\cdot (109 \\cdot 90)) + 1000 + 300 \\cdot").scale(0.65)
         starting_equation4_0 = MathTex(" 100 \\div 2 \\cdot 10 \\div (10 \\cdot 90) - 2 \\div 8 \\cdot (19 \\div 8 - 10 - 10 + 10 \\div 10) \\cdot 10").scale(0.65)
         starting_equation5_0 = MathTex("+ 100 - 10 \\cdot 10 \\cdot 2 \\div 346 = (5 + 4 \\div 3 + (4 + n - 30 - 4) + 90 - 80)").scale(0.65)
@@ -122,9 +122,47 @@ class Solution(Scene):
 
         starting_equation_full1.move_to(sef_pos)
 
-        counter_text1.move_to(counter_box.get_center()+RIGHT*5.5+DOWN*0.5)
+        counter_text1.move_to(counter_box)
 
         starting_equation_full0.move_to(LEFT * 2 + DOWN * 0.125)
 
         self.play(Transform(starting_equation10_0,starting_equation10_1),Transform(counter_text0,counter_text1))
+        self.wait(2)
+
+        starting_equation10_2 = MathTex(" - 80 - 108  - 8 + 9 ").scale(0.65) 
+        counter_text2 = MathTex("2", font_size=100, color=RED)
+
+        starting_equation_full2 = VGroup(
+            starting_equation1_0, starting_equation2_0, starting_equation3_0,
+            starting_equation4_0, starting_equation5_0,starting_equation6_0,
+            starting_equation7_0, starting_equation8_0, starting_equation9_0,
+            starting_equation10_2, starting_equation11_0 
+        ).arrange(DOWN, buff=0.15)
+
+        starting_equation_full2.move_to(sef_pos)
+
+        counter_text2.move_to(counter_box)
+
+        starting_equation_full2.move_to(LEFT * 2 + DOWN * 0.125)
+
+        self.play(Transform(starting_equation10_1,starting_equation10_2),FadeToColor(counter_text1,BLACK),Write(counter_text2))
+        self.wait(5)
+
+        starting_equation2_1 = MathTex(" 90  )  \\div 2 \\cdot (109 \\cdot (30 \\cdot 2 \\div 8) + 90)").scale(0.65)
+        counter_text3 = MathTex("3", font_size=100, color=RED)
+
+        starting_equation_full3 = VGroup(
+            starting_equation1_0, starting_equation2_1, starting_equation3_0,
+            starting_equation4_0, starting_equation5_0,starting_equation6_0,
+            starting_equation7_0, starting_equation8_0, starting_equation9_0,
+            starting_equation10_2, starting_equation11_0 
+        ).arrange(DOWN, buff=0.15)
+
+        starting_equation_full3.move_to(sef_pos)
+
+        counter_text3.move_to(counter_box)
+
+        starting_equation_full3.move_to(LEFT * 2 + DOWN * 0.125)
+
+        self.play(Transform(starting_equation2_0,starting_equation2_1),Transform(counter_text2,counter_text3),FadeToColor(starting_equation_full2,BLACK),Write(starting_equation_full3) ) 
         self.wait(5)
