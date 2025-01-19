@@ -10,6 +10,8 @@ https://www.youtube.com/@ManimAnimations - My Channel
 ## ⚠️Warnings⚠️
 These files run on manim, so be warned if you are new to python and manim!
 
+If you think that my files are unorganized, im with you
+
 ## 💻Installations💻
 1. Install Latex
 2. Install FFmpeg
@@ -18,3 +20,4 @@ These files run on manim, so be warned if you are new to python and manim!
 5. Enjoy!!
 
 See https://youtu.be/8-Ocd9IlVKI?si=qitYW44C8LwZTxGv for more information
+
